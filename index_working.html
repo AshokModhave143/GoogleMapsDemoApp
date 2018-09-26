@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place details</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8"> 
+    <script type="text/javascript" src="./vendor/angular.min.js"></script>  
+    <script type="text/javscript" src="./vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./app/app.js"></script>
+    <script type="text/javascript" src="./app/appController.js"></script>
+    <script type="text/javascript" src="./scripts/googleService.js"></script>
+    <link rel="stylesheet" src="./css/main.css">
+  </head>
+  <body ng-app="GoogleMap">
+    <div id="header" ng-controller="headerController">
+      <h1>{{title}}</h1>
+    </div>    
+    <hr />
+    <div id="container" ng-controller="mainController">
+        <div id="searchPanel">
+          <label>From Location : </label>
+          <input type="text" id="fromloc" ng-model="fromlocation" placeholder="Enter start location" ng-change="valChange(this.value)">
+          <label>To Location : </label>
+          <input type="text" ng-model="tolocation" placeholder="Enter start location">
+          <button id="searchLocBtn" id="toloc" ng-click="searchLocation()">Search location</button>
+        </div>
+
+        <div id="right-panel">
+            <p>Query suggestions for 'pizza near Syd':</p>
+            <ul id="results"></ul>
+          </div>
+        <hr />
+        <div id="map" style="height:500px;width:500px">    
+        </div>
+        <div id="jsonview">
+
+        </div>
+    </div>
+    <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHbPBnaqj9psKNK8doF0V5MEcbOdt46q8&libraries=places&callback=initMap">
+    </script> -->
+    <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHbPBnaqj9psKNK8doF0V5MEcbOdt46q8&libraries=places&callback=initBasicMap">
+    </script> -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHbPBnaqj9psKNK8doF0V5MEcbOdt46q8&libraries=places&callback=initService"
+    async defer></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHbPBnaqj9psKNK8doF0V5MEcbOdt46q8&libraries=places&callback=initAutocomplete"
+    async defer></script> -->
+  </body>
+</html>
+      

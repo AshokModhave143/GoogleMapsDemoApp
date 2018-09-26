@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place details</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">   
+    
+    <link rel="stylesheet" src="./css/main.css">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHbPBnaqj9psKNK8doF0V5MEcbOdt46q8&libraries=places"
+    async defer></script>
+    <script type="text/javascript" src="./vendor/angular.min.js"></script>  
+    <script type="text/javscript" src="./vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./app/app.js"></script>
+    <script type="text/javascript" src="./app/appService.js"></script>
+    <script type="text/javascript" src="./app/appController.js"></script>
+  </head>
+  <body ng-app="GoogleMap">
+    <div id="header" ng-controller="headerController">
+      <h1>{{title}}</h1>
+    </div>    
+    <hr />
+    <div id="container" ng-controller="locationController">
+      <form id="searchform">        
+        <div id="input-group">
+          <input name="place" id="place" type="text" class="form-control" ng-model="searchPlace" ng-change="searchTextChanged()" placeholder="Minium 3 characters required" required autofocus />          
+          <button id="searchbtn" class="btn btn-primary" ng-click="search()">Search</button>   
+          |
+          <label>From :</label>
+          <input type="text" id="fromloc" class="form-control" ng-model="fromlocation">          
+          <label>To :</label>
+          <input type="text" id="toloc" class="form-control" ng-model="tolocation">
+          <button id="searchbtn" class="btn btn-primary" ng-click="searchRoute()">Search</button>          
+        </div>
+      </form>
+      <!-- <select ng-model="selectedPlace" ng-options="suggestion.description for suggestion in suggestionList">
+        <option value=""> --Select</option>
+      </select>       -->
+      <div id="right-panel">
+          <p>Query suggestions for {{searchPlace}}:</p>
+          <ul id="results"></ul>
+      </div>
+      <div>
+        <ul>
+          <li ng-repeat="suggestion in  suggestionList" ng-click="gotoLocation(suggestion)">{{suggestion.description}}</li>
+        </ul>
+      </div>
+      <hr />
+      <div id="map" style="height:400px;width:100%"></div>
+    </div>
+  </body>
+</html>
+      
